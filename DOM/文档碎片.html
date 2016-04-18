@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>文档碎片</title>
+	<script>
+		window.onload = function(){
+			var oUl = document.getElementById('ul');
+			var aLi = oUl.getElementsByTagName('li');
+			var oBtn = document.getElementById('btn');
+
+			//利用文档碎片，向ul添加大量的li
+			oBtn.onclick = function(){
+				for(var i= 0;i<1000;i++){
+
+					var fra = document.createDocumentFragment();
+					var oLi = document.createElement('li');
+					fra.appendChild(oLi);
+
+					if(aLi.length == 0){
+						oUl.appendChild(fra);
+					}else{
+						oUl.insertBefore(fra,aLi[0])
+					}
+				}
+			};
+		};
+	</script>
+</head>
+<body>
+	<input id="btn" type="button" value="创建li"/>
+	<ul id="ul">
+		<li>静子</li>
+	</ul>
+</body>
+</html>

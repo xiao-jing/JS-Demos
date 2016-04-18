@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+	<title>ul插入li</title>
+</head>
+<script>
+	window.onload = function(){
+		var oUl = document.getElementById('ul');
+		var oBtn = document.getElementById('btn');
+		var oTxt = document.getElementById('txt');
+		var aLi = oUl.getElementsByTagName('li');
+
+		oBtn.onclick = function(){
+			var oLi = document.createElement('li');
+			oLi.innerHTML = oTxt.value;
+
+			if(aLi.length == 0){
+				oUl.appendChild(oLi);
+			}else{
+				oUl.insertBefore(oLi,aLi[0])
+			}
+			oTxt.value = '';
+		};
+	};
+</script>
+<body>
+<input id="txt" type="text"/>
+<input id="btn" type="button" value="创建li"/>
+	<ul id="ul">
+		<li>静子</li>
+	</ul>
+</body>
+</html>

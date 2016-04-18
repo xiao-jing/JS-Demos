@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'/>
+	<title>表格--隔行变色</title>
+	<script>
+        window.onload = function(){
+        	var oTab = document.getElementById('tab1');
+        	var oTr = oTab.tBodies[0].rows;
+        	var preBgColor = '';
+
+        	for(var i=0;i<oTr.length;i++){
+        		oTr[i].style.background = i % 2?'silver':'';  //1,3,5···为真
+
+        		oTr[i].onmouseover = function(){
+        			preBgColor = this.style.background;
+        			this.style.background = 'yellow';
+        		};
+        		oTr[i].onmouseout = function(){
+        			this.style.background = preBgColor;
+        		};
+        	}
+        };
+	</script>
+</head>
+<body>
+	<table id="tab1" border="1" width="300">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>姓名</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>静子1</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>静子2</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>静子3</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>静子4</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

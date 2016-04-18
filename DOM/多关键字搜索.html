@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'/>
+	<title>多关键字搜索</title>
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			var oTxt = document.getElementById('txt');
+			var oTab = document.getElementById('tab1');
+			var oTr = oTab.tBodies[0].rows;
+
+			oBtn.onclick = function(){
+				var txtVal = oTxt.value.toLowerCase().split('');  //获取文本内容
+
+				for(var i=0;i<oTr.length;i++){
+
+					var oFound = false;
+
+					for(var j=0;j<oTr[0].cells.length;j++){   //遍历每一个单元格
+						var cellVal = oTr[i].cells[j].innerHTML.toLowerCase();  //获取单元格内容
+						for(var k=0;k<txtVal.length;k++){
+							if(cellVal.search(txtVal[k]) != -1){  //判断是否含有txtVal中的关键词
+								oFound = true;
+								break;
+							}
+						}
+
+						if(oFound == true){
+							break;
+						}
+					}
+					if(oFound == true){
+							oTr[i].style.background = 'red';
+						}else{
+							oTr[i].style.background = '';
+						}
+				}
+				oTxt.value = '';
+			};
+		};
+	</script>
+</head>
+<body>
+	<input id="txt" type="text" value=""/>
+	<input id="btn" type="button" value="搜索">
+	<table id="tab1" border="1" width="300">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>姓名</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>静子</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>aBC</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>泡泡</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>静子</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

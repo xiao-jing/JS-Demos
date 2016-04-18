@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'/>
+	<title>表格--隔行变色</title>
+	<script>
+        window.onload = function(){
+        	var oTab = document.getElementById('tab1');
+        	var oBtn = document.getElementById('btn');
+        	var oTxt = document.getElementById('txt');
+        	var iNowId = oTab.tBodies[0].rows.length + 1;  //保留行数，避免id重复
+
+        	oBtn.onclick = function(){
+        		var aTr = document.createElement('tr');
+        		var aTd = null;
+
+        		aTd = document.createElement('td');
+        		aTd.innerHTML = iNowId++;
+        		aTr.appendChild(aTd);
+
+        		aTd = document.createElement('td');
+        		aTd.innerHTML = oTxt.value;
+        		aTr.appendChild(aTd);
+        		oTxt.value = '';
+
+        		aTd = document.createElement('td');
+        		aTd.innerHTML = '<a href="#">删除</a>';
+        		aTr.appendChild(aTd);
+
+        		oTab.tBodies[0].appendChild(aTr);
+
+        		aTd.getElementsByTagName('a')[0].onclick = function(){  //删除行
+        			oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+        		};
+        	};
+        };
+	</script>
+</head>
+<body>
+	<input type="text" id="txt" value="">
+	<input type="button" id="btn" name="" value="增加一行">
+	<table id="tab1" border="1" width="300">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>姓名</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>静子1</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>静子2</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>静子3</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>静子4</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
